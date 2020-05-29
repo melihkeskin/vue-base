@@ -1,28 +1,47 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>
+      {{ title }}
+    </h1>
+    <NavBar />
+    <!-- send parameters -->
+    <AllFriends :friends="friends" />
+    <OnlineFriends :friends="friends" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import NavBar from "@/components/NavBar";
+import AllFriends from "@/components/AllFriends";
+import OnlineFriends from "@/components/OnlineFriends";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    NavBar,
+    AllFriends,
+    OnlineFriends,
+    // alias
+    // NavBar : NavBar
+  },
+  data() {
+    return {
+      title: "My first vue app, voooo :)",
+      friends: [
+        { name: "Mario", online: true },
+        { name: "Luigi", online: false },
+        { name: "Toad", online: true },
+        { name: "Bambo", online: false },
+      ],
+    };
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+.h1 {
   color: #2c3e50;
-  margin-top: 60px;
+  font-weight: normal;
+  text-align: center;
 }
 </style>
