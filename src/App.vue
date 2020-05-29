@@ -4,6 +4,7 @@
       {{ title }}
     </h1>
     <NavBar />
+    <Blogs />
     <!-- send parameters -->
     <AllFriends :friends="friends" @delete="deleteFriend" />
     <OnlineFriends :friends="friends" />
@@ -14,6 +15,7 @@
 import NavBar from "@/components/NavBar";
 import AllFriends from "@/components/AllFriends";
 import OnlineFriends from "@/components/OnlineFriends";
+import Blogs from "@/components/Blogs";
 
 export default {
   name: "App",
@@ -21,6 +23,7 @@ export default {
     NavBar,
     AllFriends,
     OnlineFriends,
+    Blogs,
     // alias
     // NavBar : NavBar
   },
