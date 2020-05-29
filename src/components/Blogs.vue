@@ -1,11 +1,15 @@
 <template>
   <div>
     <h3>{{ blogTitle }}</h3>
-    <button @click="changeTitle">Change Title</button>
+    <div v-for="post in posts" :key="post.id">
+      <h3>{{ post.title }}</h3>
+      <p>{{ post.body }}</p>
+    </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "Blogs",
   methods: {
@@ -16,20 +20,18 @@ export default {
   data() {
     return {
       blogTitle: "Blogs",
+      posts: [],
     };
   },
-  //   lifecycle hooks
-  // before anything actually create
-  beforeCreate() {
-    alert("beforeCreate hook");
-  },
-  // on create dom
   created() {
-    alert("created hook");
-  },
-  // before event fire
-  beforeUpdate() {
-    alert("beforeUpdate hook");
+    axios
+      .get("https://jsonplaceholder.typicode.com/posts/")
+      .then((response) => {
+        this.posts = response.data;
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   },
 };
 </script>
