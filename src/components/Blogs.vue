@@ -25,6 +25,7 @@ export default {
       searchTerm: "",
     };
   },
+  //on complete the render it will working
   computed: {
     filteredPosts() {
       return this.posts.filter((post) => {
